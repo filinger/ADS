@@ -21,7 +21,8 @@
     <div class="list-group-item">
         <span class="badge">4</span>
         <h4>Листинг</h4>
-        <div hljs="" include="'js/ads-labs.js'">
+
+        <div hljs="" include="'js/ads/bubble-sort.js'">
         </div>
     </div>
 </div>
@@ -35,8 +36,19 @@
                       ng-model="inputToSort" placeholder="For example: 5 4 3 2 1">
             </textarea>
         </div>
-        <div class="panel-footer" ng-if="sortedArray != null && uniqueNumbers != null">
-            Sorted array: {{sortedArray}} with {{uniqueNumbers}} unique numbers
+    </div>
+    <div ng-if="sortResult != null && uniqueNumbers != null">
+        <div class="list-group">
+            <div class="list-group-item">
+                Sorted array: {{sortResult.array}}
+            </div>
+            <div class="list-group-item">
+                Array has <span class="label label-info">{{uniqueNumbers}}</span> unique numbers
+            </div>
+            <div class="list-group-item">
+                Sort performed with <span class="label label-info">{{sortResult.comparesCount}}</span> compares &
+                <span class="label label-info">{{sortResult.swapsCount}}</span> swaps
+            </div>
         </div>
     </div>
     <div class="alert alert-danger" ng-if="sortError !== null">

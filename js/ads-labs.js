@@ -11,23 +11,7 @@ angular.module('adsLabs', ['hljs'])
             templateUrl: 'lab6.html'
         }
     })
-    .service('BubbleSort', function () {
-        this.sort = function (array) {
-            var swapped;
-            do {
-                swapped = false;
-                for (var i = 0; i < array.length - 1; i++) {
-                    if (array[i] > array[i + 1]) {
-                        var temp = array[i];
-                        array[i] = array[i + 1];
-                        array[i + 1] = temp;
-                        swapped = true;
-                    }
-                }
-            } while (swapped);
-            return array;
-        };
-    })
+    .service('BubbleSort', bubbleSortService)
     .controller('BubbleSortController', function ($scope, BubbleSort) {
         var toNumber = function (x) {
             return parseFloat(x);
@@ -40,7 +24,7 @@ angular.module('adsLabs', ['hljs'])
                     uniqueNumbers++;
                 }
             }
-            if (array[i] !== array[0]) {
+            if (array.length > 0) {
                 uniqueNumbers++;
             }
             return uniqueNumbers;
@@ -48,7 +32,7 @@ angular.module('adsLabs', ['hljs'])
 
         $scope.$watch("inputToSort", function (newValue) {
             $scope.sortError = null;
-            $scope.sortedArray = null;
+            $scope.sortResult = null;
             $scope.uniqueNumbers = null;
 
             if (newValue == null || newValue == undefined || newValue == '') {
@@ -57,8 +41,8 @@ angular.module('adsLabs', ['hljs'])
 
             try {
                 $scope.arrayToSort = newValue.split(/[\s,]+/).map(toNumber);
-                $scope.sortedArray = BubbleSort.sort($scope.arrayToSort);
-                $scope.uniqueNumbers = countUniqueNumbers($scope.sortedArray);
+                $scope.sortResult = BubbleSort.sort($scope.arrayToSort);
+                $scope.uniqueNumbers = countUniqueNumbers($scope.sortResult.array);
             } catch (exception) {
                 $scope.sortError = exception.message;
             }
