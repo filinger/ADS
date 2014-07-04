@@ -1,0 +1,45 @@
+<div class="list-group">
+    <div class="list-group-item">
+        <span class="badge">1</span>
+        <h4>Цель работы</h4>
+        Целью работы является изучение алгоритмов внутренней сортировки и
+        получение практических навыков их использования.
+    </div>
+    <div class="list-group-item">
+        <span class="badge">2</span>
+        <h4>Задание на лабораторную работу</h4>
+        Использовать неупорядоченный массив A, содержащий n
+        целочисленных элементов. Величина n определяется по согласованию с
+        преподавателем.
+    </div>
+    <div class="list-group-item">
+        <span class="badge">3</span>
+        <h4>Вариант 6</h4>
+        Найти количество различных чисел среди элементов
+        массива. Алгоритм сортировки - пузырьком.
+    </div>
+    <div class="list-group-item">
+        <span class="badge">4</span>
+        <h4>Листинг</h4>
+        <div hljs="" include="'js/ads-labs.js'">
+        </div>
+    </div>
+</div>
+<div ng-controller="BubbleSortController" ng-init="sortError = null">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Bubble Sort</h3>
+        </div>
+        <div class="panel-body">
+            <textarea class="form-control input-lg" style="resize: none" rows="7"
+                      ng-model="inputToSort" placeholder="For example: 5 4 3 2 1">
+            </textarea>
+        </div>
+        <div class="panel-footer" ng-if="sortedArray != null && uniqueNumbers != null">
+            Sorted array: {{sortedArray}} with {{uniqueNumbers}} unique numbers
+        </div>
+    </div>
+    <div class="alert alert-danger" ng-if="sortError !== null">
+        <strong>Error:</strong> {{sortError}}
+    </div>
+</div>
