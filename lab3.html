@@ -1,0 +1,58 @@
+<div class="list-group">
+    <div class="list-group-item">
+        <span class="badge">1</span>
+        <h4>Цель работы</h4>
+        Целью работы является изучение структур данных «линейный список» и
+        «циклический список», а также получение практических навыков их
+        реализации.
+    </div>
+    <div class="list-group-item">
+        <span class="badge">2</span>
+        <h4>Задание на лабораторную работу</h4>
+        Реализовать структуры данных «линейный список» и «циклический
+        список» в соответствии с заданным вариантом.
+    </div>
+    <div class="list-group-item">
+        <span class="badge">3</span>
+        <h4>Вариант 6</h4>
+        Многочлен P(x) = anx (n) + an-1x (n-1) + ... + a1x + a0 с целыми
+        коэффициентами можно представить в виде списка, причем если
+        ai = 0, то соответствующее звено не включать в список. Определить
+        процедуру, которая строит многочлен p – сумму многочленов q и r.
+        Список - линейный.
+    </div>
+    <div class="list-group-item">
+        <span class="badge">4</span>
+        <h4>Листинг</h4>
+
+        <div hljs="" include="'js/ads/linked-list.js'">
+        </div>
+    </div>
+</div>
+<div ng-controller="LinkedListController" ng-init="sumError = null">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Linked List</h3>
+        </div>
+        <div class="panel-body">
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon">L</span>
+                <input type="text" class="form-control" placeholder="For example: 3 0 1" ng-model="leftPolynomial">
+            </div>
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon">R</span>
+                <input type="text" class="form-control" placeholder="For example: 2 1 0" ng-model="rightPolynomial">
+            </div>
+        </div>
+        <div class="panel-footer" ng-if="sumResult != null">
+            Polynomial sum:
+            <comment ng-repeat="member in sumResult track by $index" ng-if="member !== 0">
+                {{(member > 0 ? '+' : '') + member + (sumResult.length - $index - 1 > 0 ? 'x' : '')}}
+                <sup>{{sumResult.length - $index - 1 > 1 ? sumResult.length - $index - 1 : ''}}</sup>
+            </comment>
+        </div>
+    </div>
+    <div class="alert alert-danger" ng-if="sumError !== null">
+        <strong>Error:</strong> {{sumError}}
+    </div>
+</div>
